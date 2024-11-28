@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,4 +24,4 @@ Route::middleware([
     })->name('dashboard');
 });
 
-#Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
