@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Dashboard', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -25,3 +26,4 @@ Route::middleware([
 });
 
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+

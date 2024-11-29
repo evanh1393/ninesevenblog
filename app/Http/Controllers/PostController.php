@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class PostController extends Controller
 {
@@ -13,11 +13,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        return inertia('Posts/PostsIndex', [
-            'posts' => Post::all()
+        return inertia('Posts/Index', [
+            'posts' => PostResource::collection(Post::latest()->latest('id')->paginate()),
         ]);
     }
-
 
     /**
      * Show the form for creating a new resource.
